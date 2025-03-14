@@ -1,6 +1,15 @@
 import React from "react";
-import { Text } from "react-native";
+import { Image, Text } from "react-native";
 
 export default function Loading() {
-  return <Text style={{ marginTop: 20 }}>Loading abilities...</Text>;
+  
+  return (
+    <>
+      <Image 
+        source={require("../../assets/images/pokeball.svg")} 
+        style={{ width: 70, height: 70, marginTop: 20 }}
+        alt="Loading abilities..."
+      />
+    </>
+  )
 }
