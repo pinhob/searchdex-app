@@ -41,7 +41,7 @@ export default function Loading() {
   return (
     <>
       <Animated.Image 
-        source={require("../../assets/images/pokeball.svg")} 
+        source={require("../../assets/images/pokeball.png")} 
         style={{ 
           width: 70, 
           height: 70, 

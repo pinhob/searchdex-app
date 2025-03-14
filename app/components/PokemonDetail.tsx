@@ -19,6 +19,7 @@ export default function PokemonDetail({ name, imageUrl, abilities }: PokemonDeta
       <Name>{name}</Name>
       <PokemonImage 
         source={{ uri: imageUrl }} 
+        style={{ width: 270, height: 200 }} 
         resizeMode="contain"
       />
       <AbilitiesWrapper>
@@ -56,8 +57,6 @@ const Name = styled.Text`
 `;
 
 const PokemonImage = styled.Image`
-  width: 100%;
-  height: 200px;
   margin-bottom: 20px;
   background-color: #4385F5;
   border-radius: ${props => props.theme.borderRadius.lg}px;

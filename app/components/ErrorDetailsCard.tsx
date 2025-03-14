@@ -8,6 +8,7 @@ export default function ErrorDetailsCard() {
       <Name>Erro 404</Name>
       <ErrorImage 
         source={require("../../assets/images/crying_pikachu.webp")} 
+        style={{ width: 270, height: 200 }} 
         resizeMode="contain"
       />
       <AbilitiesWrapper>
