@@ -22,7 +22,7 @@ export default function SearchInput({ value, onChangeText, onSearch }: SearchInp
       <SearchIcon name="search" size={20} color="#757575" />
       <TextInput
         placeholder="Pesquise um Pokémon..."
-        placeholderTextColor={props => props.theme.colors.lightText}
+        placeholderTextColor={(props: { theme: { colors: { lightText: any; }; }; }) => props.theme.colors.lightText}
         value={value}
         onChangeText={onChangeText}
         onSubmitEditing={onSearch}
@@ -39,15 +39,15 @@ const InputContainer = styled.View`
   width: 85%;
   max-width: 500px;
   height: 44px;
-  background-color: ${props => props.theme.colors.background};
+  background-color: ${(props: { theme: { colors: { background: any; }; }; }) => props.theme.colors.background};
   margin: 20px 0;
   padding: 0 16px;
-  border-radius: ${props => props.theme.borderRadius.lg}px;
+  border-radius: ${(props: { theme: { borderRadius: { lg: any; }; }; }) => props.theme.borderRadius.lg}px;
   border-width: 1px;
   border-color: #dfe1e5;
   shadow-opacity: 0.2;
   shadow-radius: 3px;
-  shadow-color: ${props => props.theme.colors.shadow};
+  shadow-color: ${(props: { theme: { colors: { shadow: any; }; }; }) => props.theme.colors.shadow};
   shadow-offset: 0px 1px;
   elevation: 2;
 `;
@@ -58,6 +58,6 @@ const SearchIcon = styled(Ionicons)`
 
 const TextInput = styled(RNTextInput)`
   flex: 1;
-  font-size: ${props => props.theme.fontSizes.md}px;
-  color: ${props => props.theme.colors.text};
+  font-size: ${(props: { theme: { fontSizes: { md: any; }; }; }) => props.theme.fontSizes.md}px;
+  color: ${(props: { theme: { colors: { text: any; }; }; }) => props.theme.colors.text};
 `;

@@ -50,8 +50,8 @@ const Name = styled.Text`
   width: 100%;
   text-align: center;
   background-color: #FDE49B;
-  padding: ${props => props.theme.spacing.sm}px 0;
-  border-radius: ${props => props.theme.borderRadius.md}px;
+  padding: ${(props: { theme: { spacing: { sm: any; }; }; }) => props.theme.spacing.sm}px 0;
+  border-radius: ${(props: { theme: { borderRadius: { md: any; }; }; }) => props.theme.borderRadius.md}px;
   margin-bottom: 15px;
   text-transform: capitalize;
 `;
@@ -59,7 +59,7 @@ const Name = styled.Text`
 const PokemonImage = styled.Image`
   margin-bottom: 20px;
   background-color: #4385F5;
-  border-radius: ${props => props.theme.borderRadius.lg}px;
+  border-radius: ${(props: { theme: { borderRadius: { lg: any; }; }; }) => props.theme.borderRadius.lg}px;
 `;
 
 const AbilitiesTitle = styled.Text`
@@ -74,6 +74,6 @@ const AbilitiesTitle = styled.Text`
 const AbilitiesWrapper = styled.View`
   width: 100%;
   background-color: #FDE49B;
-  padding: ${props => props.theme.spacing.md}px 0;
-  border-radius: ${props => props.theme.borderRadius.md}px;
+  padding: ${(props: { theme: { spacing: { md: any; }; }; }) => props.theme.spacing.md}px 0;
+  border-radius: ${(props: { theme: { borderRadius: { md: any; }; }; }) => props.theme.borderRadius.md}px;
 `; 
