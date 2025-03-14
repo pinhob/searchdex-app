@@ -1,23 +1,16 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import SearchTitle from "./components/SearchTitle";
 import SearchInput from "./components/SearchInput";
 import SearchButton from "./components/SearchButton";
-import api from "@/lib/api";
+import { useSearchAbilities } from "./hooks/useSearchAbilities";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { data: abilities, isLoading, refetch } = useSearchAbilities(searchQuery);
 
   const handleSearch = () => {
-    console.log("Searching for:", searchQuery);
-
-    api.get(`/abilities/${searchQuery}`)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    refetch();
   };
 
   return (
@@ -31,6 +24,20 @@ export default function Index() {
       <SearchTitle />
       <SearchInput value={searchQuery} onChangeText={setSearchQuery} />
       <SearchButton onPress={handleSearch} />
+
+      {isLoading && (
+        <Text style={{ marginTop: 20 }}>Loading abilities...</Text>
+      )}
+
+      {!isLoading && abilities?.length > 0 && (
+        <View style={{ marginTop: 20 }}>
+          {abilities.map((ability: { name: string }, index: number) => (
+            <Text key={index} style={{ marginVertical: 5 }}>
+              {ability.name}
+            </Text>
+          ))}
+        </View>
+      )}
     </View>
   );
 }
