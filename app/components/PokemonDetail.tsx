@@ -72,7 +72,7 @@ const AbilitiesTitle = styled.Text`
 
 
 const AbilitiesWrapper = styled.View`
-  width: 100%;
+  width: 270px;
   background-color: #FDE49B;
   padding: ${(props: { theme: { spacing: { md: any; }; }; }) => props.theme.spacing.md}px 0;
   border-radius: ${(props: { theme: { borderRadius: { md: any; }; }; }) => props.theme.borderRadius.md}px;
