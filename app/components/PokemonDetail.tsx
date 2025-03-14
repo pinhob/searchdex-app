@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image } from "react-native";
+import styled from "styled-components/native";
 import AbilitiesList from "./AbilitiesList";
 
 interface Ability {
@@ -14,39 +15,39 @@ interface PokemonDetailProps {
 
 export default function PokemonDetail({ name, imageUrl, abilities }: PokemonDetailProps) {
   return (
-    <View style={styles.wrapper}>
-      <Text style={styles.name}>{name}</Text>
-      <Image 
+    <Wrapper>
+      <Name>{name}</Name>
+      <PokemonImage 
         source={{ uri: imageUrl }} 
-        style={styles.image} 
         resizeMode="contain"
       />
-      <Text style={styles.abilitiesTitle}>Abilities:</Text>
+      <AbilitiesTitle>Abilities:</AbilitiesTitle>
       <AbilitiesList abilities={abilities} />
-    </View>
+    </Wrapper>
   );
 }
 
-const styles = StyleSheet.create({
-  wrapper: {
-    alignItems: "center",
-    marginTop: 20,
-    width: "80%",
-  },
-  name: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 10,
-    textTransform: "capitalize",
-  },
-  image: {
-    width: 200,
-    height: 200,
-    marginBottom: 15,
-  },
-  abilitiesTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 5,
-  }
-});
+const Wrapper = styled.View`
+  align-items: center;
+  margin-top: 20px;
+  width: 80%;
+`;
+
+const Name = styled.Text`
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+`;
+
+const PokemonImage = styled.Image`
+  width: 200px;
+  height: 200px;
+  margin-bottom: 15px;
+`;
+
+const AbilitiesTitle = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+`;
