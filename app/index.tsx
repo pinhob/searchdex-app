@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SearchTitle from "./components/SearchTitle";
+import Logo from "./components/Logo";
 import SearchInput from "./components/SearchInput";
 import SearchButton from "./components/SearchButton";
 import Loading from "./components/Loading";
@@ -20,7 +20,7 @@ export default function Index() {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <SearchTitle />
+        <Logo />
         <SearchInput value={searchQuery} onChangeText={setSearchQuery} />
         <SearchButton onPress={handleSearch} />
 
