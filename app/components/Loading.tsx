@@ -48,8 +48,9 @@ export default function Loading() {
           marginTop: 20,
           transform: [{ rotate: rotation }]
         }}
-        alt="Loading abilities..."
+        alt="Carregando habilidades..."
       />
+      <Text>Carregando...</Text>
     </>
   )
 }
