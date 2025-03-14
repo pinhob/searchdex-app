@@ -1,6 +1,16 @@
-import { Text, View } from "react-native";
+import React, { useState } from "react";
+import { View } from "react-native";
+import SearchTitle from "./components/SearchTitle";
+import SearchInput from "./components/SearchInput";
+import SearchButton from "./components/SearchButton";
 
 export default function Index() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = () => {
+    console.log("Searching for:", searchQuery);
+  };
+
   return (
     <View
       style={{
@@ -9,7 +19,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <SearchTitle />
+      <SearchInput value={searchQuery} onChangeText={setSearchQuery} />
+      <SearchButton onPress={handleSearch} />
     </View>
   );
 }
