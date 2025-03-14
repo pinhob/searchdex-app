@@ -1,14 +1,22 @@
 import React from "react";
-import { View, TextInput as RNTextInput } from "react-native";
+import { View, TextInput as RNTextInput, Keyboard } from "react-native";
 import styled from "styled-components/native";
 import { Ionicons } from "@expo/vector-icons";
 
 interface SearchInputProps {
   value: string;
   onChangeText: (text: string) => void;
+  onSearch?: () => void;
 }
 
-export default function SearchInput({ value, onChangeText }: SearchInputProps) {
+export default function SearchInput({ value, onChangeText, onSearch }: SearchInputProps) { 
+  const handleKeyPress = (e: any) => {
+    if (e.nativeEvent.key === 'Enter' && onSearch) {
+      onSearch();
+      Keyboard.dismiss();
+    }
+  };
+
   return (
     <InputContainer>
       <SearchIcon name="search" size={20} color="#757575" />
@@ -17,6 +25,9 @@ export default function SearchInput({ value, onChangeText }: SearchInputProps) {
         placeholderTextColor={props => props.theme.colors.lightText}
         value={value}
         onChangeText={onChangeText}
+        onSubmitEditing={onSearch}
+        onKeyPress={handleKeyPress}
+        returnKeyType="search"
       />
     </InputContainer>
   );

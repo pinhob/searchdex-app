@@ -22,7 +22,11 @@ export default function Index() {
     <ThemeProvider theme={theme}>
       <Container>
         <Logo />
-        <SearchInput value={searchQuery} onChangeText={setSearchQuery} />
+        <SearchInput 
+          value={searchQuery} 
+          onChangeText={setSearchQuery} 
+          onSearch={handleSearch}
+        />
         <SearchButton onPress={handleSearch} />
 
         {isLoading && <Loading />}
