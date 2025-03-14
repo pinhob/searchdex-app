@@ -21,8 +21,10 @@ export default function PokemonDetail({ name, imageUrl, abilities }: PokemonDeta
         source={{ uri: imageUrl }} 
         resizeMode="contain"
       />
-      <AbilitiesTitle>Abilities:</AbilitiesTitle>
-      <AbilitiesList abilities={abilities} />
+      <AbilitiesWrapper>
+        <AbilitiesTitle>Habilidades</AbilitiesTitle>
+        <AbilitiesList abilities={abilities} />
+      </AbilitiesWrapper>
     </Wrapper>
   );
 }
@@ -30,24 +32,49 @@ export default function PokemonDetail({ name, imageUrl, abilities }: PokemonDeta
 const Wrapper = styled.View`
   align-items: center;
   margin-top: 20px;
-  width: 80%;
+  min-width: 300px;
+  background-color: #FABC05;
+  border-radius: 12px;
+  padding: 20px 15px;
+  shadow-color: #000;
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.25;
+  shadow-radius: 3.84px;
+  elevation: 5;
 `;
 
 const Name = styled.Text`
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
-  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  background-color: #FDE49B;
+  padding: ${props => props.theme.spacing.sm}px 0;
+  border-radius: ${props => props.theme.borderRadius.md}px;
+  margin-bottom: 15px;
   text-transform: capitalize;
 `;
 
 const PokemonImage = styled.Image`
-  width: 200px;
+  width: 100%;
   height: 200px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  background-color: #4385F5;
+  border-radius: ${props => props.theme.borderRadius.lg}px;
 `;
 
 const AbilitiesTitle = styled.Text`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  margin-left: 10px;
 `;
+
+
+const AbilitiesWrapper = styled.View`
+  width: 100%;
+  background-color: #FDE49B;
+  padding: ${props => props.theme.spacing.md}px 0;
+  border-radius: ${props => props.theme.borderRadius.md}px;
+`; 

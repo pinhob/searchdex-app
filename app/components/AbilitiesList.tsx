@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import styled from "../styles/styled";
 
 interface Ability {
   name: string;
@@ -11,12 +11,32 @@ interface AbilitiesListProps {
 
 export default function AbilitiesList({ abilities }: AbilitiesListProps) {
   return (
-    <View style={{ marginTop: 20 }}>
+    <AbilitiesContainer>
       {abilities.map((ability, index) => (
-        <Text key={index} style={{ marginVertical: 5 }}>
-          {ability.name}
-        </Text>
+        <AbilityItem key={index}>
+          <AbilityText>{ability.name}</AbilityText>
+        </AbilityItem>
       ))}
-    </View>
+    </AbilitiesContainer>
   );
 }
+
+const AbilitiesContainer = styled.View`
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+`;
+
+const AbilityItem = styled.View`
+  background-color: #F2F7F2;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  align-items: center;
+`;
+
+const AbilityText = styled.Text`
+  font-weight: bold;
+  text-transform: capitalize;
+`;
