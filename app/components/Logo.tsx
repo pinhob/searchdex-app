@@ -7,6 +7,7 @@ export default function Logo() {
     <>
       <Image
         source={LogoImage}
+        style={{ maxWidth: '100%', objectFit: 'contain' }}
         alt="SearchDex"
       />
     </>
