@@ -4,12 +4,12 @@ import SearchTitle from "./components/SearchTitle";
 import SearchInput from "./components/SearchInput";
 import SearchButton from "./components/SearchButton";
 import Loading from "./components/Loading";
-import AbilitiesList from "./components/AbilitiesList";
+import PokemonDetail from "./components/PokemonDetail";
 import { useSearchAbilities } from "./hooks/useSearchAbilities";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
-  const { data: abilities, isLoading, refetch } = useSearchAbilities(searchQuery);
+  const { data, isLoading, refetch } = useSearchAbilities(searchQuery);
 
   const handleSearch = () => {
     refetch();
@@ -29,8 +29,12 @@ export default function Index() {
 
       {isLoading && <Loading />}
 
-      {!isLoading && abilities?.length > 0 && (
-        <AbilitiesList abilities={abilities} />
+      {!isLoading && data?.name && (
+        <PokemonDetail 
+          name={data.name} 
+          imageUrl={data.image} 
+          abilities={data.abilities || []} 
+        />
       )}
     </View>
   );
