@@ -8,10 +8,11 @@ import { useSearchAbilities } from "./hooks/useSearchAbilities";
 import { ThemeProvider } from "./styles/styled";
 import { theme } from "./styles/theme";
 import styled from "./styles/styled";
+import ErrorDetailsCard from "./components/ErrorDetailsCard";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
-  const { data, isLoading, refetch } = useSearchAbilities(searchQuery);
+  const { data, isLoading, isError, refetch } = useSearchAbilities(searchQuery);
 
   const handleSearch = () => {
     refetch();
@@ -25,6 +26,8 @@ export default function Index() {
         <SearchButton onPress={handleSearch} />
 
         {isLoading && <Loading />}
+
+        {!isLoading && isError && <ErrorDetailsCard />}
 
         {!isLoading && data?.name && (
           <PokemonDetail 
