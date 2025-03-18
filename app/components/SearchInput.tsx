@@ -22,6 +22,14 @@ export default function SearchInput({ value, onChangeText, onSearch, pokemonsLis
     }
 
     if (pokemonsList && pokemonsList.length > 0) {
+      const fullMatch = pokemonsList.some((pokemon) => pokemon.toLowerCase() === value.toLowerCase());
+
+      if (fullMatch) {
+        setShowSuggestions(false);
+        setFilteredPokemons([]);
+        return;
+      }
+
       const filtered = pokemonsList.filter((pokemon) => 
         pokemon.toLowerCase().includes(value.toLowerCase())
       )
@@ -45,6 +53,12 @@ export default function SearchInput({ value, onChangeText, onSearch, pokemonsLis
     onChangeText(pokemon);
     setShowSuggestions(false);
     Keyboard.dismiss();
+
+    if (onSearch) {
+      setTimeout(() => {
+        onSearch();
+      }, 0);
+    }
   }
 
   return (
