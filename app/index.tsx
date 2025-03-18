@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./components/Logo";
 import SearchInput from "./components/SearchInput";
 import SearchButton from "./components/SearchButton";
@@ -9,6 +9,8 @@ import { ThemeProvider } from "./styles/styled";
 import { theme } from "./styles/theme";
 import styled from "./styles/styled";
 import ErrorDetailsCard from "./components/ErrorDetailsCard";
+import api from "@/lib/api";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,6 +20,12 @@ export default function Index() {
     refetch();
   };
 
+  const { data: pokemonsList } = useQuery({
+    queryKey: ["pokemons"],
+    queryFn: () => api.get('/pokemons').then(response => response.data)
+  }
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -26,6 +34,7 @@ export default function Index() {
           value={searchQuery} 
           onChangeText={setSearchQuery} 
           onSearch={handleSearch}
+          pokemonsList={pokemonsList}
         />
         <SearchButton onPress={handleSearch} />
 
